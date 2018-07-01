@@ -1,0 +1,95 @@
+.grid {
+  display: grid;
+  box-shadow: 1px 1px 3px #333;
+}
+
+
+.node {
+  position: relative;
+  cursor: pointer;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.white:hover {
+  background-color: #ccc;
+}
+
+.grey {
+  background-color: #eee;
+ }
+
+.grey:hover {
+  background-color: #bbb;
+}
+
+.terminal {
+  background-color: #999;
+}
+
+.terminal:after {
+  z-index: 1;
+  content: 'T';
+  color: #fff;
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+}
+
+.index {
+  font-size: 0.8rem;
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+}
+
+.value {
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: 0.5rem;
+  right: 0.5rem;
+  color: red;
+}
+
+.north:after {
+  z-index: 2;
+  position: absolute;
+  content: '↑';
+  color: #333;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+}
+
+.south:after {
+  z-index: 2;
+  position: absolute;
+  content: '↓';
+  color: #333;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+}
+
+.east:after {
+  z-index: 2;
+  position: absolute;
+  content: '→';
+  color: #333;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+}
+
+.west:after {
+  z-index: 2;
+  position: absolute;
+  content: '←';
+  color: #333;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 3rem;
+}
