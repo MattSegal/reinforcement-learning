@@ -31,12 +31,12 @@
 
 .terminal:after {
   z-index: 1;
-  content: 'T';
+  content: 'END';
   color: #fff;
   position: absolute;
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3rem;
+  font-size: 2rem;
 }
 
 .index {

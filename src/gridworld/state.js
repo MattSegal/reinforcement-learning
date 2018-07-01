@@ -1,8 +1,8 @@
 import Grid from './grid'
 
 module.exports = {
-  rows: 4,
-  cols: 4,
+  rows: 5,
+  cols: 5,
   terminals: [
     [0, 0],
   ],

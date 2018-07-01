@@ -12,6 +12,7 @@ const mapStateToProps = state => ({
 })
 const mapDispatchToProps = dispatch => ({
   iteratePolicyValue: () => dispatch(actions.iteratePolicyValue()),
+  iterateOptimalValue: () => dispatch(actions.iterateOptimalValue()),
   changeNumRows: inc => () => dispatch(actions.changeNumRows(inc)),
   changeNumCols: inc => () => dispatch(actions.changeNumCols(inc)),
   createGrid: () => dispatch(actions.createGrid()),
@@ -20,24 +21,34 @@ const mapDispatchToProps = dispatch => ({
 class Controls extends Component {
 
   componentDidMount() {
-    setInterval(this.props.iteratePolicyValue, 300)
+    setInterval(this.props.iterateOptimalValue, 100)
   }
 
   render() {
-    return <div style={{fontSize: '3rem'}}>
-      <div>
-        <button onClick={this.props.changeNumRows(1)}>+</button>
-        {this.props.rows} rows
-        <button onClick={this.props.changeNumRows(-1)}>-</button></div>
-      <div>
-        <button onClick={this.props.changeNumCols(1)}>+</button>
-        {this.props.cols} cols
-        <button onClick={this.props.changeNumCols(-1)}>-</button>
-        </div>
-      <div><button onClick={this.props.createGrid}>reset</button></div>
+    return <div className={styles.controls}>
+      <Counter
+        text={`${this.props.rows} rows`}
+        increase={this.props.changeNumRows(1)}
+        decrease={this.props.changeNumRows(-1)}
+      />
+      <Counter
+        text={`${this.props.cols} cols`}
+        increase={this.props.changeNumCols(1)}
+        decrease={this.props.changeNumCols(-1)}
+      />
+      <button className={styles.button} onClick={this.props.createGrid}>reset</button>
     </div>
   }
 }
+
+
+const Counter = props => (
+  <div className={styles.counter}>
+    <button onClick={props.increase}>+</button>
+    <div className={styles.text}>{props.text}</div>
+    <button onClick={props.decrease}>-</button>
+  </div>
+)
 
 
 module.exports = connect(mapStateToProps, mapDispatchToProps)(Controls)

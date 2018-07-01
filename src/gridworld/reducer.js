@@ -17,6 +17,13 @@ const reducers = {
       nodes: state.grid.sortedNodes()
     }
   },
+  ITERATE_OPTIMAL_VALUE:  (state, action) => {
+    state.grid.iterateOptimalValue()
+    return {
+      ...state,
+      nodes: state.grid.sortedNodes()
+    }
+  },
   CHANGE_NUM_ROWS: (state, action) => {
     let newRows = state.rows + action.increment
     newRows = newRows < 2 ? 2 : newRows

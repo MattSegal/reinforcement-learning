@@ -21,6 +21,7 @@ export default class Grid {
       for (let j = 0; j < this.cols; j++) {
         this.nodes.push({
           isTerminal: terminals.some(t => t[0] === i & t[1] === j),
+          isHole: false,
           row: i,
           col: j,
           value: 0,
@@ -35,6 +36,11 @@ export default class Grid {
   }
 
   buildActions = node => {
+    if (node.isHole) {
+      node.actions = []
+      return
+    }
+
     const actions = []
     const noNorth = node.isTerminal || node.row === 0
     const noSouth = node.isTerminal || node.row === this.rows - 1
@@ -98,4 +104,20 @@ export default class Grid {
       node.value = value
     }
   }
+
+  iterateOptimalValue = () => {
+    for (let node of this.nodes) {
+      let maxValue = Number.NEGATIVE_INFINITY
+      // Sum value over all possible actions
+      for (const action of node.actions) {
+        // Get the reward for having been in this state
+        const reward = node.isTerminal ? 0 : REWARD
+        // Get the value of the next state
+        const value = reward + action.next.value
+        maxValue = maxValue < value ? value : maxValue
+      }
+      node.value = maxValue
+    }
+  }
+
 }

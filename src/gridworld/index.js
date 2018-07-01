@@ -12,9 +12,11 @@ export default class GridWorld extends Component {
         width: '100%',
         height: '100%',
         display: 'flex',
-        justifyContent: 'center',
+        justifyContent: 'flex-start',
         alignItems: 'center',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        padding: '2rem',
+        boxSizing: 'border-box',
       }}>
         <Controls/>
         <Grid/>
